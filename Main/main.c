@@ -3,24 +3,49 @@
 #include <string.h>
 #include <time.h>
 
-int main ()
+int main(int argc, char *argv[])
 {
     //皆為參賽指引程式碼
     char chessboard[19][19];
-    
-    for(int i=0; i<19; i++)
+    char letters[19]="ABCDEFGHIJKLMNOPQRS"; 
+    int row=0, col=0;
+    int quit=0;
+    srand((unsigned long int)&row);
+
+    for(int i=0;i<19;i++)
     {
-        for(int j=0; j<19; j++)
+        for(int j=0;j<19;j++)
         {
             scanf(" %c", &chessboard[i][j]);
         }
     }
 
-    char letters[19]={'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S'}; 
-    int row=0, col=0;
-
-    srand((unsigned long int)&row);
-    row = rand()%19;
-    col = rand()%19;
-    printf("%c, %d\n", letters[col], row+1);
+    if(strcmp(argv[1],"Black")==0)
+    {
+        // 要下黑子
+        while(!quit)
+        {
+            row = rand()%19;
+            col = rand()%19;
+            if(chessboard[row][col] == '.')
+            {
+                printf("%c, %d\n", letters[col], row+1);
+                quit = 1;
+            }
+        }
+    }
+    else 
+    {
+        // 要下白子
+        while(!quit)
+        {
+            row = rand()%19;
+            col = rand()%19;
+            if(chessboard[row][col] == '.')
+            {
+                printf("%c, %d\n", letters[col], row+1);
+                quit = 1;
+            }
+        }
+    }
 }
