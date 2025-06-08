@@ -1,3 +1,3 @@
-# Five-kids-chest
+# Five-kids-chess
 
 For NPTU-CSIE Gomoku Competition
