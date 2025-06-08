@@ -5,9 +5,22 @@ typedef enum
     None = 0
 } Player;
 
-Player checkHorizontal(char (*p)[5]);
-Player checkVertical(char (*p)[19]);
-Player checkDiagonal(char (*p)[19]);
-Player checkBackDiagonal(char (*p)[19]);
+typedef struct
+{
+    const char *pattern;
+    int weight;
+    int offset;
+    int hole;
+} Pattern;
 
-Player check4Winner(char chessboard[19][19]);
+typedef struct
+{
+    int weight;
+    int offset;
+    int offsetweight;
+} Weight;
+
+
+void checkBoard();
+Weight checkLine();
+extern int scoreboard[19][19];

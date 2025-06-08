@@ -1,5 +1,6 @@
 import subprocess
 
+record_file = open("record.txt", "w", encoding="utf-8")
 BOARD_SIZE = 19
 LETTERS = "ABCDEFGHIJKLMNOPQRS"
 
@@ -93,15 +94,21 @@ def main():
         print(f"{color} 落子：{move_str}")
         print_board(board)
         print("-" * 40)
+        record_file.write(f"{turn+1:02d}. {color} 落子：{move_str}\n")
+        for i in range(19):
+            record_file.write(' '.join(board[i]) + '\n')
+        record_file.write("-" * 40 + "\n")
 
         winner = check_winner(board, row, col)
         if winner:
             print(f"{winner} 獲勝！")
+            record_file.write(f"{winner} 獲勝！\n")
             break
 
         turn += 1
 
     print("對戰結束")
+    record_file.close()
 
 if __name__ == "__main__":
     main()

@@ -1,8 +1,8 @@
 all: main.c function.o
-	cc -o cbb113000 main.c function.o
+	cc main.c function.o
 
-function.o: function.c
+function.o: function.c function.h
 	cc -c function.c
 
-clear:
-	rm *.o a.out *.*~
+clean:
+	rm -f *.o a.out *.*~
